@@ -1,103 +1,65 @@
-import Image from "next/image";
+"use client";
+import ImageCarousel from "@/components/shared/ImageCarousel";
+import Navbar from "@/components/shared/Navbar";
+import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import type { Pin } from "@/components/shared/LeafletMap";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+
+const LeafletMap = dynamic(() => import("@/components/shared/LeafletMap"), {
+    ssr: false,
+});
+
+const pins: Pin[] = [
+    { id: 1, position: [51.4823606, -3.1825207] }, // Cardiff Castle
+    { id: 2, position: [51.5760923, -3.2228239] }, // Caerphilly Castle
+    { id: 3, position: [51.5357254, -3.2558339] }, // Castell Coch
+    { id: 3, position: [51.4863826, -3.2689194] }, // St Fagans
+];
+import castles from "../../public/data/castles.json";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    const castlesImages = ["/Caerphilly Castle.jpg", "/Castell Coch.jpg", "/St Fagans.jpg", "/Cardiff Castle.jpg"];
+    const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    const handlePinClick = (id: number) => {
+        router.push(`/castles/${castles[id - 1].name}`);
+    };
+
+    return (
+        <>
+            <Navbar />
+            <h1 className="text-[64px] pl-[10vw]">Castles</h1>
+            <div className="flex justify-center items-center">
+                <ImageCarousel images={castlesImages} />
+            </div>
+
+            <div className="flex justify-center items-start gap-8 mt-4 px-[10vw]">
+                <div className="w-1/2 h-[35vh] rounded-md shadow-md">
+                    <LeafletMap pins={pins} onPinClick={handlePinClick} />
+                </div>
+
+                <Card className="w-1/2 bg-white shadow-md rounded-lg">
+                    <CardContent>
+                        <h1 className="text-3xl font-semibold mb-4">List of Castles</h1>
+                        <ul className="list-disc pl-5 space-y-2 marker:text-blue-500 marker:text-lg">
+                            <li className="text-lg text-gray-700">CARDIFF CASTLE</li>
+                            <li className="text-lg text-gray-700">CASTELL COCH</li>
+                            <li className="text-lg text-gray-700">CAERPHILLY CASTLE</li>
+                            <li className="text-lg text-gray-700">ST FAGAN’S CASTLE</li>
+                            <li className="text-lg text-gray-700">PLACEHOLDER CASTLE 1</li>
+                            <li className="text-lg text-gray-700">PLACEHOLDER CASTLE 2</li>
+                            <li className="text-lg text-gray-700">PLACEHOLDER CASTLE 3</li>
+                            <li className="text-lg text-gray-700">PLACEHOLDER CASTLE 4</li>
+                            <li className="text-lg text-gray-700">PLACEHOLDER CASTLE 5</li>
+                            <Link href={"/castles"} className="text-blue-500 hover:text-blue-600">
+                                <li className="text-lg">More...</li>
+                            </Link>
+                        </ul>
+                    </CardContent>
+                </Card>
+            </div>
+        </>
+    );
 }

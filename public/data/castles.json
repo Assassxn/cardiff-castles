@@ -1,0 +1,202 @@
+[
+    {
+        "name": "Caerphilly Castle",
+        "image": "Caerphilly Castle.jpg",
+        "description": "placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now",
+        "thingsToDo": [
+            "something to do 1",
+            "something to do 2",
+            "something to do 3",
+            "something to do 4",
+            "something to do 5",
+            "something to do 6"
+        ],
+        "reviews": [
+            {
+                "id": "1",
+                "author": "Alice Johnson",
+                "rating": 5,
+                "date": "2024-05-12T14:23:00.000Z",
+                "text": "Absolutely stunning grounds and amazing guided tour. A must-see!"
+            },
+            {
+                "id": "2",
+                "author": "Michael Smith",
+                "rating": 4,
+                "date": "2024-06-01T09:15:00.000Z",
+                "text": "Great history lesson, though the gift shop is a bit pricey."
+            },
+            {
+                "id": "3",
+                "author": "Priya Patel",
+                "rating": 3,
+                "date": "2024-06-10T17:45:00.000Z",
+                "text": "Beautiful architecture, but it gets very crowded on weekends."
+            },
+            {
+                "id": "4",
+                "author": "Liam O’Connor",
+                "rating": 4,
+                "date": "2024-07-03T11:30:00.000Z",
+                "text": "Loved the panoramic views from the tower—worth the climb!"
+            },
+            {
+                "id": "5",
+                "author": "Sofia García",
+                "rating": 2,
+                "date": "2024-07-15T13:00:00.000Z",
+                "text": "Nice site but the cafe was closed when I visited—plan ahead."
+            }
+        ]
+    },
+    {
+        "name": "Cardiff Castle",
+        "image": "Cardiff Castle.jpg",
+        "description": "placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now",
+        "thingsToDo": [
+            "something to do 1",
+            "something to do 2",
+            "something to do 3",
+            "something to do 4",
+            "something to do 5",
+            "something to do 6"
+        ],
+        "reviews": [
+            {
+                "id": "1",
+                "author": "Alice Johnson",
+                "rating": 5,
+                "date": "2024-05-12T14:23:00.000Z",
+                "text": "Absolutely stunning grounds and amazing guided tour. A must-see!"
+            },
+            {
+                "id": "2",
+                "author": "Michael Smith",
+                "rating": 4,
+                "date": "2024-06-01T09:15:00.000Z",
+                "text": "Great history lesson, though the gift shop is a bit pricey."
+            },
+            {
+                "id": "3",
+                "author": "Priya Patel",
+                "rating": 3,
+                "date": "2024-06-10T17:45:00.000Z",
+                "text": "Beautiful architecture, but it gets very crowded on weekends."
+            },
+            {
+                "id": "4",
+                "author": "Liam O’Connor",
+                "rating": 4,
+                "date": "2024-07-03T11:30:00.000Z",
+                "text": "Loved the panoramic views from the tower—worth the climb!"
+            },
+            {
+                "id": "5",
+                "author": "Sofia García",
+                "rating": 2,
+                "date": "2024-07-15T13:00:00.000Z",
+                "text": "Nice site but the cafe was closed when I visited—plan ahead."
+            }
+        ]
+    },
+    {
+        "name": "Castell Coch",
+        "image": "Castell Coch.jpg",
+        "description": "placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now",
+        "thingsToDo": [
+            "something to do 1",
+            "something to do 2",
+            "something to do 3",
+            "something to do 4",
+            "something to do 5",
+            "something to do 6"
+        ],
+        "reviews": [
+            {
+                "id": "1",
+                "author": "Alice Johnson",
+                "rating": 5,
+                "date": "2024-05-12T14:23:00.000Z",
+                "text": "Absolutely stunning grounds and amazing guided tour. A must-see!"
+            },
+            {
+                "id": "2",
+                "author": "Michael Smith",
+                "rating": 4,
+                "date": "2024-06-01T09:15:00.000Z",
+                "text": "Great history lesson, though the gift shop is a bit pricey."
+            },
+            {
+                "id": "3",
+                "author": "Priya Patel",
+                "rating": 3,
+                "date": "2024-06-10T17:45:00.000Z",
+                "text": "Beautiful architecture, but it gets very crowded on weekends."
+            },
+            {
+                "id": "4",
+                "author": "Liam O’Connor",
+                "rating": 4,
+                "date": "2024-07-03T11:30:00.000Z",
+                "text": "Loved the panoramic views from the tower—worth the climb!"
+            },
+            {
+                "id": "5",
+                "author": "Sofia García",
+                "rating": 2,
+                "date": "2024-07-15T13:00:00.000Z",
+                "text": "Nice site but the cafe was closed when I visited—plan ahead."
+            }
+        ]
+    },
+    {
+        "name": "St Fagans Castle",
+        "image": "St Fagans.jpg",
+        "description": "placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now placeholder for now",
+        "thingsToDo": [
+            "something to do 1",
+            "something to do 2",
+            "something to do 3",
+            "something to do 4",
+            "something to do 5",
+            "something to do 6"
+        ],
+        "reviews": [
+            {
+                "id": "1",
+                "author": "Alice Johnson",
+                "rating": 5,
+                "date": "2024-05-12T14:23:00.000Z",
+                "text": "Absolutely stunning grounds and amazing guided tour. A must-see!"
+            },
+            {
+                "id": "2",
+                "author": "Michael Smith",
+                "rating": 4,
+                "date": "2024-06-01T09:15:00.000Z",
+                "text": "Great history lesson, though the gift shop is a bit pricey."
+            },
+            {
+                "id": "3",
+                "author": "Priya Patel",
+                "rating": 3,
+                "date": "2024-06-10T17:45:00.000Z",
+                "text": "Beautiful architecture, but it gets very crowded on weekends."
+            },
+            {
+                "id": "4",
+                "author": "Liam O’Connor",
+                "rating": 4,
+                "date": "2024-07-03T11:30:00.000Z",
+                "text": "Loved the panoramic views from the tower—worth the climb!"
+            },
+            {
+                "id": "5",
+                "author": "Sofia García",
+                "rating": 2,
+                "date": "2024-07-15T13:00:00.000Z",
+                "text": "Nice site but the cafe was closed when I visited—plan ahead."
+            }
+        ]
+    }
+]
