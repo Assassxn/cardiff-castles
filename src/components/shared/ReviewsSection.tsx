@@ -21,9 +21,12 @@ interface Props {
     initialReviews: Review[];
 }
 
+// Define the exact union type for sorting:
+type SortKey = "newest" | "oldest" | "rating";
+
 export default function ReviewsSection({ castleId, initialReviews }: Props) {
     const [reviews, setReviews] = useState<Review[]>([]);
-    const [sortKey, setSortKey] = useState<"newest" | "oldest" | "rating">("newest");
+    const [sortKey, setSortKey] = useState<SortKey>("newest");
     const [open, setOpen] = useState(false);
     const [newRating, setNewRating] = useState(0);
     const [newText, setNewText] = useState("");
@@ -69,7 +72,11 @@ export default function ReviewsSection({ castleId, initialReviews }: Props) {
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-semibold">Reviews</h2>
                 <div className="flex items-center space-x-2">
-                    <Select value={sortKey} onValueChange={(v) => setSortKey(v as any)}>
+                    <Select
+                        value={sortKey}
+                        // value comes in as our SortKey union—no `any` needed
+                        onValueChange={(value: SortKey) => setSortKey(value)}
+                    >
                         <SelectTrigger size="sm">
                             <SelectValue placeholder="Sort" />
                         </SelectTrigger>
@@ -93,12 +100,7 @@ export default function ReviewsSection({ castleId, initialReviews }: Props) {
 
                             <div className="flex space-x-1 mb-4">
                                 {[1, 2, 3, 4, 5].map((i) => (
-                                    <Star
-                                        key={i}
-                                        size={24}
-                                        className={`${i <= newRating ? "text-yellow-500 fill-current" : "text-gray-300"} cursor-pointer`}
-                                        onClick={() => setNewRating(i)}
-                                    />
+                                    <Star key={i} size={24} className={`${i <= newRating ? "text-yellow-500 fill-current" : "text-gray-300"} cursor-pointer`} onClick={() => setNewRating(i)} />
                                 ))}
                             </div>
 

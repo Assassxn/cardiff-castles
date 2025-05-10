@@ -3,6 +3,7 @@ import Navbar from "@/components/shared/Navbar";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import castles from "../../../../public/data/castles.json";
 import ReviewsSection from "@/components/shared/ReviewsSection";
+import Image from "next/image";
 type Props = { params: Promise<{ id: string }> };
 
 export default async function CastlePage({ params }: Props) {
@@ -21,7 +22,7 @@ export default async function CastlePage({ params }: Props) {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="w-full rounded-lg shadow-md overflow-hidden">
-                        <img src={`/${castle.image}`} alt={castle.name} className="w-full h-auto object-cover rounded-lg" />
+                        <Image src={`/${castle.image}`} alt={castle.name} className="w-full h-auto object-cover rounded-lg" />
                     </div>
 
                     <Card className="h-full">
