@@ -1,6 +1,23 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+    const [username, setUsername] = useState<string | null>(null);
+
+    useEffect(() => {
+        const sessionEmail = localStorage.getItem("session");
+        const stored = localStorage.getItem("users");
+        if (sessionEmail && stored) {
+            try {
+                const users = JSON.parse(stored) as { name: string; email: string }[];
+                const u = users.find((u) => u.email === sessionEmail);
+                if (u) setUsername(u.name);
+            } catch {
+                console.warn("Failed to parse users from localStorage");
+            }
+        }
+    }, []);
+  
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-white dark:border-gray-800 dark:bg-gray-950">
             <div className="flex h-16 w-full items-center justify-between px-4 md:px-6">
@@ -28,6 +45,13 @@ export default function Navbar() {
                         </Link>
                     </nav>
                 </div>
+
+                {/* Right: Welcome message */}
+                {username && (
+                    <div className="hidden md:block">
+                        <span className="font-bold text-gray-700 dark:text-gray-300">Welcome, {username}</span>
+                    </div>
+                )}
             </div>
         </header>
     );

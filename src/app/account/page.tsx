@@ -18,6 +18,8 @@ interface User {
 type TabValue = "signin" | "signup" | "profile";
 
 export default function AccountPage() {
+    // using state to manage users and session
+    // this is a simple example, in a real app you would use a backend service
     const [users, setUsers] = useState<User[]>([]);
     const [currentUser, setCurrentUser] = useState<User | null>(null);
     const [tab, setTab] = useState<TabValue>(currentUser ? "profile" : "signin");
@@ -31,8 +33,12 @@ export default function AccountPage() {
     useEffect(() => {
         // load users and session
         const stored = localStorage.getItem("users");
+        // if users are not found in local storage, initialize with an empty array
         const sessionEmail = localStorage.getItem("session");
+
+        // if session is found, set the current user
         if (stored) setUsers(JSON.parse(stored));
+        // if session is found, set the current user
         if (sessionEmail && stored) {
             const all: User[] = JSON.parse(stored);
             const u = all.find((u) => u.email === sessionEmail);
