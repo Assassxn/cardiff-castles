@@ -57,17 +57,22 @@ export default function AccountPage() {
     const handleSignup = (e: React.FormEvent) => {
         e.preventDefault();
         if (password !== confirm) {
+            // check if passwords match
             toast.error("Passwords do not match");
             return;
         }
         if (users.some((u) => u.email === email)) {
+            // check if email is already registered
             toast.error("Email already registered");
             return;
         }
         const newUser: User = { name, email, password };
         setUsers([...users, newUser]);
+        // set the current user and store in local storage
         localStorage.setItem("session", email);
+        // set the current user to the new user
         setCurrentUser(newUser);
+        // show success message
         toast.success("Account created!");
         // reset form
         setName("");
@@ -79,13 +84,18 @@ export default function AccountPage() {
 
     const handleSignin = (e: React.FormEvent) => {
         e.preventDefault();
+        // check if email and password are correct
         const user = users.find((u) => u.email === email && u.password === password);
         if (!user) {
+            // if not, show error message
             toast.error("Invalid credentials");
             return;
         }
+        // if yes, set the current user and store in local storage
         localStorage.setItem("session", email);
+        // set the current user to the found user
         setCurrentUser(user);
+        // show success message
         toast.success("Signed in!");
         // reset
         setEmail("");
@@ -93,7 +103,9 @@ export default function AccountPage() {
         setTab("profile");
     };
 
+    // handle sign out
     const handleSignOut = () => {
+        // remove session from local storage
         localStorage.removeItem("session");
         setCurrentUser(null);
         setTab("signin");

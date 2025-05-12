@@ -25,22 +25,32 @@ interface Props {
 type SortKey = "newest" | "oldest" | "rating";
 
 export default function ReviewsSection({ castleId, initialReviews }: Props) {
+    // State to manage reviews, sort key, and dialog state
     const [reviews, setReviews] = useState<Review[]>([]);
     const [sortKey, setSortKey] = useState<SortKey>("newest");
     const [open, setOpen] = useState(false);
     const [newRating, setNewRating] = useState(0);
     const [newText, setNewText] = useState("");
 
+    // Load reviews from local storage when the component mounts
+    // and when the castleId or initialReviews change
+    // This ensures that the reviews are loaded only once when the component mounts
     useEffect(() => {
         const raw = localStorage.getItem(`reviews-${castleId}`);
         const stored: Review[] = raw ? JSON.parse(raw) : [];
         setReviews([...stored, ...initialReviews]);
     }, [castleId, initialReviews]);
 
+    // Save reviews to local storage whenever they change
+    // This ensures that the reviews are saved whenever they change
+    // and not just when the component mounts
+    // This is important for persisting the reviews across page reloads
     useEffect(() => {
         localStorage.setItem(`reviews-${castleId}`, JSON.stringify(reviews));
     }, [castleId, reviews]);
 
+    // Sort reviews based on the selected sort key
+    // This is done using the useMemo hook to avoid unnecessary re-renders
     const sorted = useMemo(() => {
         const arr = [...reviews];
         if (sortKey === "newest") {
@@ -52,6 +62,8 @@ export default function ReviewsSection({ castleId, initialReviews }: Props) {
         return arr.sort((a, b) => b.rating - a.rating);
     }, [reviews, sortKey]);
 
+    // Handle the submission of a new review
+    // This function is called when the user clicks the submit button
     const handleSubmit = () => {
         if (newRating < 1 || !newText.trim()) return;
         const review: Review = {
@@ -99,6 +111,7 @@ export default function ReviewsSection({ castleId, initialReviews }: Props) {
                             </DialogHeader>
 
                             <div className="flex space-x-1 mb-4">
+                                {/* mapping the 5 stars next to each other */}
                                 {[1, 2, 3, 4, 5].map((i) => (
                                     <Star key={i} size={24} className={`${i <= newRating ? "text-yellow-500 fill-current" : "text-gray-300"} cursor-pointer`} onClick={() => setNewRating(i)} />
                                 ))}

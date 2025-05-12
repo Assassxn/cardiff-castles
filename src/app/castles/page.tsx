@@ -8,8 +8,10 @@ import { useRouter } from "next/navigation";
 
 
 export default function Castles() {
+    // using the useRouter hook to navigate to the castle page
     const router = useRouter();
 
+    // handleClick function to navigate to the castle page
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         router.push("/castles/" + castles[parseInt(e.currentTarget.id)].name);
     };
@@ -17,6 +19,7 @@ export default function Castles() {
     return (
         <>
             <Navbar />
+            {/* mapping castles data into a list */}
             {castles.map((castle, index) => (
                 <>
                     {index === 0 && (
@@ -27,6 +30,8 @@ export default function Castles() {
                     )}
                     <div key={index} className="flex flex-col md:flex-row items-stretch gap-6 p-6 max-w-[60vw] mx-auto">
                         <div className="w-full md:w-64 h-64">
+                            {/* image of the castle */}
+                            {/* using the Image component from next/image to optimize the image */}
                             <Image
                                 onClick={handleClick}
                                 id={index.toString()}

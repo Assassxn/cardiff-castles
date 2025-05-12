@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/shared/Navbar";
 import { Calendar } from "@/components/ui/calendar";
 
+// Format the date to YYYY-MM-DD
+// This is used to create the slug for the weather page
 function formatDate(date: Date): string {
     const year = date.getFullYear();
     // getMonth() is zero-based, so add 1
@@ -18,6 +20,9 @@ export default function WeatherLandingPage() {
     const [selected, setSelected] = useState<Date | undefined>(new Date());
     const router = useRouter();
 
+    // handle the date selection
+    // and navigate to the weather page
+    // using the formatDate function to create the slug
     const onSelect = (date: Date) => {
         setSelected(date);
         const slug = formatDate(date);
@@ -34,6 +39,7 @@ export default function WeatherLandingPage() {
                         <p className="mt-1 text-gray-600">Pick the date you would like to visit</p>
                     </div>
 
+                    {/* display the calendary in big */}
                     <div className="w-full p-6 flex justify-center">
                         <Calendar selected={selected} required mode="single" onSelect={(d) => d && onSelect(d)} />
                     </div>

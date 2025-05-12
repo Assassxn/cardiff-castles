@@ -32,6 +32,8 @@ export default async function WeatherDatePage({ params }: Props) {
     const longitude = -3.1825207; // Updated longitude for Cardiff
     const timezone = "Europe/London";
 
+    // fetch the weather data from Open-Meteo API
+    // using the latitude and longitude of Cardiff
     const url =
         `https://api.open-meteo.com/v1/forecast` +
         `?latitude=${latitude}` +
@@ -41,12 +43,15 @@ export default async function WeatherDatePage({ params }: Props) {
         `&hourly=relativehumidity_2m,visibility` +
         `&timezone=${encodeURIComponent(timezone)}`;
 
+    // fetch the data from the API
     const res = await fetch(url, { next: { revalidate: 3600 } });
     if (!res.ok) {
+        // if the response is not ok, log the error and return a 404 page
         console.error("Open-Meteo fetch failed", await res.text());
         notFound();
     }
 
+    // parse the response as JSON
     const data: OpenMeteoResponse = await res.json();
     const d = data.daily;
     const h = data.hourly;

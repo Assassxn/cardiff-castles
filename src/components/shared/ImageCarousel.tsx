@@ -11,6 +11,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
     return (
         <Carousel className="w-screen max-w-[80vw]">
             <CarouselContent>
+                {/* mapping all images provided in params into a carousel */}
                 {images.map((image, index) => (
                     <CarouselItem key={index}>
                         <Card className="h-[50vh] overflow-hidden w-full p-0">

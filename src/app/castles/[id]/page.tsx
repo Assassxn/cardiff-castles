@@ -7,8 +7,11 @@ import Image from "next/image";
 type Props = { params: Promise<{ id: string }> };
 
 export default async function CastlePage({ params }: Props) {
+    // get the castle id from the params
     const { id } = await params;
+    // check if the id is valid
     const castle = castles.find((c) => c.name === decodeURIComponent(id));
+    // if the castle is not found, return a 404 page
     if (!castle) notFound();
 
     return (
@@ -31,6 +34,7 @@ export default async function CastlePage({ params }: Props) {
                         </CardHeader>
                         <CardContent className="overflow-y-auto">
                             <ul className="list-disc list-inside space-y-1 marker:text-blue-500 text-lg">
+                                {/* loop through the things to do and add it in a list */}
                                 {castle.thingsToDo.map((item, i) => (
                                     <li key={i}>{item}</li>
                                 ))}

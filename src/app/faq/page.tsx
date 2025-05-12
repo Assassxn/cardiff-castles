@@ -12,6 +12,10 @@ export default function FAQ() {
                 <p className="text-muted-foreground mb-6">Find answers to the most common questions below</p>
 
                 <Accordion type="single" collapsible className="space-y-4">
+                    {/* map through the data and create a card for each FAQ */}
+                    {/* using the AccordionItem to create a collapsible item */}
+                    {/* using the AccordionTrigger to create the clickable header */}
+                    {/* using the AccordionContent to create the content of the item */}
                     {data.map((faq: { question: string; answer: string }, index: number) => (
                         <Card key={index} className="w-full h-full cursor-pointer hover:shadow-lg transition-shadow duration-200">
                             <CardContent>

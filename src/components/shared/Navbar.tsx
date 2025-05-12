@@ -46,7 +46,7 @@ export default function Navbar() {
                     </nav>
                 </div>
 
-                {/* Right: Welcome message */}
+                {/* Weclome message if user is logged in */}
                 {username && (
                     <div className="hidden md:block">
                         <span className="font-bold text-gray-700 dark:text-gray-300">Welcome, {username}</span>
