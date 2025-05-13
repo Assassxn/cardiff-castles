@@ -1,4 +1,5 @@
-A Simple Website made in React to display castles in cardiff, show the weather, and list different activities you can do in each castle while also allowing users to submit and view reviews.
+A Simple Website made in React to display castles in cardiff, show the weather, and list different activities you can do in each castle while also allowing users to submit and view reviews and show a map of the different castles on the map.
+<br>
 <br>
 no backend is used for this project as it is only to demonstrate the UI
 
