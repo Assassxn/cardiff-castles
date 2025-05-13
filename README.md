@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A Simple Website made in React to display castles in cardiff, show the weather, and list different activities you can do in each castle while also allowing users to submit and view reviews.
+<br>
+no backend is used for this project as it is only to demonstrate the UI
 
 ## Getting Started
 
